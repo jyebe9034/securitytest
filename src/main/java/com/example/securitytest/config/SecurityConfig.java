@@ -1,6 +1,7 @@
 package com.example.securitytest.config;
 
 import com.example.securitytest.service.MemberService;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,6 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private MemberService memberService;
@@ -52,6 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
     }
 }
